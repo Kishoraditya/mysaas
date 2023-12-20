@@ -26,6 +26,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     "home",
     "search",
+    "userauth",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -93,12 +94,12 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('SQL_ENGINE', 'django.db.backends.postgresql'),
-        'NAME': os.environ.get('SQL_DATABASE','db_postgres'),
-        'USER': os.environ.get('SQL_USER','admin'),
-        'PASSWORD': os.environ.get('SQL_PASSWORD','q'),
-        'HOST': os.environ.get('SQL_HOST','127.0.0.1'),
-        'PORT': os.environ.get('SQL_PORT','5432'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db_saas',
+        'USER': 'usr_saas',
+        'PASSWORD': 'q',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -175,3 +176,6 @@ WAGTAILSEARCH_BACKENDS = {
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "http://example.com"
+
+#custom user model
+AUTH_USER_MODEL = 'userauth.CustomUser'
